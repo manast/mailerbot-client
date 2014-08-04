@@ -1,0 +1,19 @@
+{
+  "name": "mailerbot",
+  "version": "0.0.1",
+  "description": "A bull queue based email bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/manast/mailerbot.git"
+  },
+  "author": "Manuel Astudillo",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/manast/mailerbot/issues"
+  },
+  "homepage": "https://github.com/manast/mailerbot"
+}
