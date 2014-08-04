@@ -12,6 +12,8 @@ var Queue = require('bull');
 var JOB_QUEUE_NAME = 'MailerBot';
 
 function MailerBotClient(opts){
+  console.debug("Created mailerbot client with opts: %s", opts);
+  console.debug(Error().stack);
   this.clientId = opts.clientId || 'default';
   this.jobQueue = Queue(JOB_QUEUE_NAME, opts.redisPort, opts.redisHost);
   this.resultsQueueName = 'MailerBot-client-'+this.clientId;
