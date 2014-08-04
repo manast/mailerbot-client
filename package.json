@@ -1,5 +1,5 @@
 {
-  "name": "mailerbot",
+  "name": "mailerbot-client",
   "version": "0.0.1",
   "description": "A bull queue based email bot",
   "main": "index.js",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/manast/mailerbot/issues"
   },
-  "homepage": "https://github.com/manast/mailerbot"
+  "homepage": "https://github.com/manast/mailerbot",
+  "dependencies": {
+    "bull": "^0.1.6"
+  }
 }
