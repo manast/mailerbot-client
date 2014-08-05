@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/manast/mailerbot.git"
+    "url": "git://github.com/manast/mailerbot-client.git"
   },
   "author": "Manuel Astudillo",
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/manast/mailerbot/issues"
+    "url": "https://github.com/manast/mailerbot-client/issues"
   },
-  "homepage": "https://github.com/manast/mailerbot",
+  "homepage": "https://github.com/manast/mailerbot-client",
   "dependencies": {
     "bull": "^0.1.6"
   }
