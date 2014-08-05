@@ -11,14 +11,30 @@ var Queue = require('bull');
 var util = require('util');
 
 var JOB_QUEUE_NAME = 'MailerBot';
+var RESULTS_QUEUE_PREFIX = 'MailerBot-client-';
 
+/**
+  MailerBotClient.
+
+  Returns an instance of a mailerbot client.
+
+  opts: {
+    redis: {
+      port: 6379,
+      host: localhost
+      opts: {}
+    }
+  }
+*/
 function MailerBotClient(opts){
-  console.log("Created mailerbot client with opts: %s", util.inspect(opts));
-  console.log(Error().stack);
+  if(!this){
+    return new MailerBotClient(opts);
+  }
   this.clientId = opts.clientId || 'default';
-  this.jobQueue = Queue(JOB_QUEUE_NAME, opts.redisPort, opts.redisHost);
-  this.resultsQueueName = 'MailerBot-client-'+this.clientId;
-  this.resultsQueue = Queue(this.resultsQueueName);
+  this.jobQueue = Queue(JOB_QUEUE_NAME, opts);
+
+  this.resultsQueueName = RESULTS_QUEUE_PREFIX+this.clientId;
+  this.resultsQueue = Queue(this.resultsQueueName, opts);
 }
 
 /**
@@ -42,5 +58,7 @@ MailerBotClient.prototype.send = function(opts){
 }
 
 module.exports = MailerBotClient;
+module.exports.JOB_QUEUE_NAME = JOB_QUEUE_NAME;
+module.exports.RESULTS_QUEUE_PREFIX = RESULTS_QUEUE_PREFIX;
 
 
