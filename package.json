@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/manast/mailerbot-client",
   "dependencies": {
-    "bull": "^0.1.6"
+    "bull": "^3.3.8"
   }
 }
