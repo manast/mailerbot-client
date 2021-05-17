@@ -8,9 +8,7 @@
 "use strict";
 
 var Queue = require("bull");
-var util = require("util");
 
-var JOB_QUEUE_NAME = "MailerBot";
 var RESULTS_QUEUE_PREFIX = "MailerBot-client-";
 
 /**
@@ -26,12 +24,15 @@ var RESULTS_QUEUE_PREFIX = "MailerBot-client-";
     }
   }
 */
-function MailerBotClient(opts) {
+function MailerBotClient(opts, queueName) {
   if (!this) {
     return new MailerBotClient(opts);
   }
+
+  queueName = queueName || "MailerBot";
+
   this.clientId = opts.clientId || "default";
-  this.jobQueue = Queue(JOB_QUEUE_NAME, opts);
+  this.jobQueue = Queue(queueName, opts);
 
   this.resultsQueueName = RESULTS_QUEUE_PREFIX + this.clientId;
   this.resultsQueue = Queue(this.resultsQueueName, opts);
@@ -53,10 +54,9 @@ function MailerBotClient(opts) {
     text: 'plain text'
   }
 */
-MailerBotClient.prototype.send = function(opts) {
+MailerBotClient.prototype.send = function (opts) {
   return this.jobQueue.add(opts);
 };
 
 module.exports = MailerBotClient;
-module.exports.JOB_QUEUE_NAME = JOB_QUEUE_NAME;
 module.exports.RESULTS_QUEUE_PREFIX = RESULTS_QUEUE_PREFIX;
