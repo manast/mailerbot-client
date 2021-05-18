@@ -26,7 +26,7 @@ var RESULTS_QUEUE_PREFIX = "MailerBot-client-";
 */
 function MailerBotClient(opts, queueName) {
   if (!this) {
-    return new MailerBotClient(opts);
+    return new MailerBotClient(opts, queueName);
   }
 
   queueName = queueName || "MailerBot";
